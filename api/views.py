@@ -1,7 +1,5 @@
 from rest_framework import viewsets, permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.response import Response
 
 from posts.models import Post, Comment, Follow, Group
 from .serializers import (
@@ -9,10 +7,12 @@ from .serializers import (
     CommentSerializer, FollowSerializer
 )
 
+
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.AllowAny]
+
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -28,6 +28,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def perform_destroy(self, serializer):
         serializer.instance.delete()
+
 
 class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
