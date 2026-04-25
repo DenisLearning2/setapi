@@ -16,7 +16,7 @@ urlpatterns = [
          name='comment-list'),
     path('v1/posts/<int:post_id>/comments/<int:pk>/',
          CommentViewSet.as_view({'get': 'retrieve', 'put': 'update',
-                                 'patch': 'partial_update', 
+                                 'patch': 'partial_update',
                                  'delete': 'destroy'}),
          name='comment-detail'),
 ]
